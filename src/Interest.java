@@ -1,2 +1,4 @@
-public class Interest {
+public class Interest
+{
+    int amt;
 }
