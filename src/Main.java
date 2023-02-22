@@ -6,5 +6,6 @@ public class Main {
         Scanner sc=new Scanner(System.in);
         UserData userData=new UserData();
 
+        int ch;
     }
 }
