@@ -21,10 +21,19 @@ public class User {
         this.acc_type = type;
     }
 
-    boolean loginUser(HashMap<Integer, User> userDetails, String uname, String password) {
-        if (userDetails.containsValue(uname)) {
-            return true;
-        } else {
+    boolean loginUser(HashMap<String, User> userDetails, String uname, String password) {
+
+        if (userDetails.containsKey(uname))
+        {
+            User temp= userDetails.get(uname);
+            System.out.println(temp.password + "==" + password);
+            if(temp.password.equals(password))
+                return true;
+            else
+                return false;
+        }
+        else
+        {
             return false;
         }
     }
@@ -56,13 +65,13 @@ public class User {
 }
 
 class UserData {
-    HashMap<Integer, User> userDetails = new HashMap<>();
+    HashMap<String, User> userDetails = new HashMap<>();
 
     public UserData() {
-        userDetails.put(1, new User(1, "Neel Shah", "neel", "neel", 2000000L, 'c'));
-        userDetails.put(2, new User(2, "Pratish Soni", "pratish", "pratish", 100000L, 's'));
-        userDetails.put(3, new User(3, "Tanish Patel", "tanish", "tanish", 250000L, 'c'));
-        userDetails.put(4, new User(4, "Jinal Thakor", "jinal", "jinal", 200000L, 's'));
+        userDetails.put("neel", new User(1, "Neel Shah", "neel", "neel", 2000000L, 'c'));
+        userDetails.put("pratish", new User(2, "Pratish Soni", "pratish", "pratish", 100000L, 's'));
+        userDetails.put("tanish", new User(3, "Tanish Patel", "tanish", "tanish", 250000L, 'c'));
+        userDetails.put("jinal", new User(4, "Jinal Thakor", "jinal", "jinal", 200000L, 's'));
     }
 
     public void getData(User user) {
@@ -75,6 +84,6 @@ class UserData {
     }
 
     public User getUser(String name) {
-
+        return userDetails.get(name);
     }
 }

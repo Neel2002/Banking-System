@@ -27,9 +27,10 @@ public class Main {
                     if(currUser.loginUser(userData.userDetails,userName,password))
                     {
                         currUser=userData.getUser(userName);
+                        System.out.println("\nLogin succeed");
                     }
                     else {
-                        System.out.println("Invalid username or password");
+                        System.out.println("\nInvalid username or password");
                     }
                 }
             }
@@ -41,6 +42,7 @@ public class Main {
         for(int i=0;i<passw.length;i++){
             System.out.print("*");
         }
+        System.out.println("\n");
         String p = new String(passw);
         return p;
     }
