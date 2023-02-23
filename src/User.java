@@ -26,7 +26,6 @@ public class User {
         if (userDetails.containsKey(uname))
         {
             User temp= userDetails.get(uname);
-            System.out.println(temp.password + "==" + password);
             if(temp.password.equals(password))
                 return true;
             else
@@ -83,7 +82,8 @@ class UserData {
 
     }
 
-    public User getUser(String name) {
+    public User getUser(String name)
+    {
         return userDetails.get(name);
     }
 }

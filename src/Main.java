@@ -28,6 +28,7 @@ public class Main {
                     {
                         currUser=userData.getUser(userName);
                         System.out.println("\nLogin succeed");
+
                     }
                     else {
                         System.out.println("\nInvalid username or password");
