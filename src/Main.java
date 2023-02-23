@@ -6,7 +6,6 @@ public class Main {
     {
         Scanner sc=new Scanner(System.in);
         UserData userData=new UserData();
-
         int ch;
 
         NewSession:
@@ -27,11 +26,81 @@ public class Main {
                     if(currUser.loginUser(userData.userDetails,userName,password))
                     {
                         currUser=userData.getUser(userName);
-                        System.out.println("\nLogin succeed");
+                        System.out.println("\nLogin succeed! Welcome " + currUser.f_name);
+                        int ch2;
+                        do{
+                            System.out.println("1. Calculate Interest \n2. Apply For Loan \n3.Show Profile \n4.Logout");
+                            ch2 = sc.nextInt();
+                            switch (ch) {
+                                case 1: {
+                                    Calculate_interest obj = new SavingAcInterest();
+                                    System.out.println("Your Balance: " + currUser.balance + "\nYour Interest: " + obj.interest(currUser.balance, sc));
+                                    break;
+                                }
+                                case 2: {
+                                    if(currUser.acc_type == 'c'){
+                                        Approve_Loan obj = new CurrentAcLoan();
+                                        if(obj.loanIsApproved(currUser.balance, sc)){
+                                            System.out.println("Congratulations! Loan Is Approved");
+                                        }
+                                        else{
+                                            System.out.println("Sorry! Loan is Rejected! ");
+                                        }
+                                        break;
+                                    }
+                                    else {
+                                        Approve_Loan obj = new SavingAcLoan();
+                                        if(obj.loanIsApproved(currUser.balance, sc)){
+                                            System.out.println("Congratulations! Loan Is Approved");
+                                        }
+                                        else{
+                                            System.out.println("Sorry! Loan is Rejected! ");
+                                        }
+                                        break;
+                                    }
+
+
+                                }
+                                case 3: {
+                                    System.out.println("Name: " + currUser.f_name + "\nUsername: " + currUser.u_name + "\nYour Balance: " + currUser.balance);
+                                    if(currUser.acc_type == 'c'){
+                                        System.out.println("Account Type: Current");
+                                    }
+                                    else{
+                                        System.out.println("Account Type: Savings");
+                                    }
+                                    break;
+                                }
+                                case 4: {
+                                    System.out.println("Thank You");
+                                    break NewSession;
+                                }
+                                default:{
+                                    System.out.println("Invalid Choice! ");
+                                }
+                            }
+                        }while (ch!=4);
                     }
                     else {
                         System.out.println("\nInvalid username or password");
                     }
+                    break;
+                }
+                case 2:
+                {
+
+                }
+                case 3:
+                {
+
+                }
+                case 4:
+                {
+                    System.out.println("Thank You! ");
+                }
+                default:
+                {
+                    System.out.println("Enter Valid Choice! ");
                 }
             }
         }while(ch!=4);

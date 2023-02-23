@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class User {
     int Account_no;
     String f_name, u_name, password;
-    ;
     long balance;
     char acc_type;// c or s
 
