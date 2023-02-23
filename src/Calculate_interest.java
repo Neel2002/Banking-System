@@ -1,13 +1,13 @@
+import java.util.Scanner;
+
 public interface Calculate_interest {
-    // abstract method
-    void interest(long amt, int time, int rate);
+    abstract double interest(long balance, Scanner sc);
 }
 
-class Inter implements Calculate_interest{
-
-    public void interest(long amt, int time, int rate){
-        long interest = amt * time * rate / 100;
-        System.out.println("amount : " + amt);
-        System.out.println("interest : " + interest);
+class SavingAcInterest implements Calculate_interest{
+    public double interest(long balance, Scanner sc) {
+        System.out.println("Enter Time (In Years): ");
+        double time = sc.nextDouble();
+        return balance*time*5/100;
     }
 }
