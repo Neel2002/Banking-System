@@ -7,7 +7,7 @@ public class User
     String f_name,u_name,password;;
     long balance;
     char acc_type;// c or s
-
+    User(){ }
     User(int id,String name,String uname,String password,long bal, char type)
     {
         this.Account_no =2000;
@@ -17,6 +17,17 @@ public class User
         this.balance=bal;
         this.acc_type=type;
     }
+
+     boolean loginUser(HashMap<Integer,User> userDetails,String uname,String password)
+     {
+         if(userDetails.containsValue(uname))
+         {
+             return true;
+         }
+         else {
+             return false;
+         }
+     }
 }
 class UserData
 {
@@ -36,6 +47,11 @@ class UserData
         System.out.println("\n------------------------------------------------------------\n");
         fmt.format("%10 %15 %15",user.Account_no,user.f_name,user.u_name);
         System.out.println(fmt);
+
+    }
+
+    public User getUser(String name)
+    {
 
     }
 }
