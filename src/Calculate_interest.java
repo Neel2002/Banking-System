@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public interface Calculate_interest {
-    abstract double interest(long balance, Scanner sc);
+    double interest(long balance, Scanner sc);
 }
 
 class SavingAcInterest implements Calculate_interest{

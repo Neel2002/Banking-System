@@ -64,29 +64,36 @@ public class User {
         }
     }
 
-    public User deposit(User u, Scanner sc) {
-        System.out.println("Enter amount you want to deposit: ");
-        int depositAmt = sc.nextInt();
-        u.balance += depositAmt;
-        return u;
+    public void deposit(Scanner sc) {
+        int depositAmt;
+        while (true) {
+            System.out.println("Enter amount you want to deposit: ");
+            depositAmt = sc.nextInt();
+            if (depositAmt <= 0) {
+                System.out.println("Enter valid positive amount. ");
+            }
+            else {
+                break;
+            }
+        }
+        this.balance += depositAmt;
     }
 
-    public User withdraw(User u, Scanner sc) {
-        System.out.print("\nYour Balance: " + u.balance);
+    public void withdraw(Scanner sc) {
+        System.out.print("\nYour Balance: " + this.balance);
         int withdrawAmt;
         while (true) {
             System.out.println("Enter amount you want to withdraw: ");
             withdrawAmt = sc.nextInt();
             if (withdrawAmt <= 0) {
                 System.out.println("Enter valid positive amount. ");
-            } else if (withdrawAmt > u.balance) {
+            } else if (withdrawAmt > this.balance) {
                 System.out.print("\nInsufficient balance. Enter valid amount.");
             } else {
                 break;
             }
         }
-        u.balance -= withdrawAmt;
-        return u;
+        this.balance -= withdrawAmt;
     }
 }
 
