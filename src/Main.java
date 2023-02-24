@@ -30,7 +30,7 @@ public class Main {
                         System.out.println("\nLogin succeed! Welcome " + currUser.f_name);
                         int ch2;
                         do{
-                            System.out.println("1. Calculate Interest \n2. Apply For Loan \n3.Show Profile \n4.Logout");
+                            System.out.println("1. Calculate Interest \n2. Apply For Loan \n3.Show Profile \n4.Withdraw \n5.Deposit \n6.Logout");
                             ch2 = sc.nextInt();
                             switch (ch2) {
                                 case 1: {
@@ -72,7 +72,15 @@ public class Main {
                                     }
                                     break;
                                 }
-                                case 4: {
+                                case 4:{
+                                    currUser.withdraw(currUser, sc);
+                                    break;
+                                }
+                                case 5:{
+                                    currUser.deposit(currUser, sc);
+                                    break;
+                                }
+                                case 6: {
                                     System.out.println("Thank You");
                                     break NewSession;
                                 }
@@ -80,7 +88,7 @@ public class Main {
                                     System.out.println("Invalid Choice! ");
                                 }
                             }
-                        }while (ch2!=4);
+                        }while (ch2!=6);
                     }
                     else {
                         System.out.println("\nInvalid username or password");
