@@ -35,30 +35,70 @@ public class User {
             return false;
         }
     }
+    public void registration(HashMap<String,User> userDetails ,Scanner sc)
+    {
+        System.out.println("Enter User Name: ");
+        this.u_name=sc.next();
+        if(userDetails.containsKey(u_name))
+        {
+            System.out.println("User Name already exists");
+        }
+        else
+        {
+            System.out.println("Enter Password: ");
+            this.password=sc.next();
+            System.out.println("Enter Full Name: ");
+            this.f_name=sc.next();
+            System.out.println("Enter Balance: ");
+            this.balance=sc.nextLong();
 
-    public User deposit(User u, Scanner sc) {
-        System.out.println("Enter amount you want to deposit: ");
-        int depositAmt = sc.nextInt();
-        u.balance += depositAmt;
-        return u;
+            while(true)
+            {
+                System.out.println("Enter Account type(c for current, s for savings): ");
+                this.acc_type=sc.next().charAt(0);
+                if(this.acc_type != 'c' || this.acc_type != 'C' || this.acc_type != 's' || this.acc_type != 'S')
+                {
+                    System.out.println("Enter Proper Account type");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            userDetails.put(this.u_name,(new User(userDetails.size(),this.f_name,this.u_name,this.password,this.balance,this.acc_type)));
+        }
     }
 
-    public User withdraw(User u, Scanner sc) {
-        System.out.print("\nYour Balance: " + u.balance);
+    public void deposit(Scanner sc) {
+        int depositAmt;
+        while (true) {
+            System.out.println("Enter amount you want to deposit: ");
+            depositAmt = sc.nextInt();
+            if (depositAmt <= 0) {
+                System.out.println("Enter valid positive amount. ");
+            }
+            else {
+                break;
+            }
+        }
+        this.balance += depositAmt;
+    }
+
+    public void withdraw(Scanner sc) {
+        System.out.print("\nYour Balance: " + this.balance);
         int withdrawAmt;
         while (true) {
             System.out.println("Enter amount you want to withdraw: ");
             withdrawAmt = sc.nextInt();
             if (withdrawAmt <= 0) {
                 System.out.println("Enter valid positive amount. ");
-            } else if (withdrawAmt > u.balance) {
+            } else if (withdrawAmt > this.balance) {
                 System.out.print("\nInsufficient balance. Enter valid amount.");
             } else {
                 break;
             }
         }
-        u.balance -= withdrawAmt;
-        return u;
+        this.balance -= withdrawAmt;
     }
 }
 

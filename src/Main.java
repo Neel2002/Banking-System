@@ -34,8 +34,13 @@ public class Main {
                             ch2 = sc.nextInt();
                             switch (ch2) {
                                 case 1: {
-                                    Calculate_interest obj = new SavingAcInterest();
-                                    System.out.println("Your Balance: " + currUser.balance + "\nYour Interest: " + obj.interest(currUser.balance, sc));
+                                    if(currUser.acc_type == 's'){
+                                        Calculate_interest obj = new SavingAcInterest();
+                                        System.out.println("Your Balance: " + currUser.balance + "\nYour Interest: " + obj.interest(currUser.balance, sc));
+                                    }
+                                    else{
+                                        System.out.println("Your account type is current account");
+                                    }
                                     break;
                                 }
                                 case 2: {
@@ -73,11 +78,11 @@ public class Main {
                                     break;
                                 }
                                 case 4:{
-                                    currUser.withdraw(currUser, sc);
+                                    currUser.withdraw(sc);
                                     break;
                                 }
                                 case 5:{
-                                    currUser.deposit(currUser, sc);
+                                    currUser.deposit(sc);
                                     break;
                                 }
                                 case 6: {
@@ -97,7 +102,8 @@ public class Main {
                 }
                 case 2:
                 {
-
+                    User currUser=new User();
+                    currUser.registration(userData.userDetails ,sc);
                 }
                 case 3:
                 {
