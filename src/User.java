@@ -26,10 +26,7 @@ public class User {
         if (userDetails.containsKey(uname))
         {
             User temp= userDetails.get(uname);
-            if(temp.password.equals(password))
-                return true;
-            else
-                return false;
+            return temp.password.equals(password);
         }
         else
         {
