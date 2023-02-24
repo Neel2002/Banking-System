@@ -37,6 +37,9 @@ public class User {
     }
     public void registration(HashMap<String,User> userDetails ,Scanner sc)
     {
+        System.out.println("Enter Full Name: ");
+        this.f_name=sc.nextLine();
+        sc.next();
         System.out.println("Enter User Name: ");
         this.u_name=sc.next();
         if(userDetails.containsKey(u_name))
@@ -47,8 +50,6 @@ public class User {
         {
             System.out.println("Enter Password: ");
             this.password=sc.next();
-            System.out.println("Enter Full Name: ");
-            this.f_name=sc.next();
             System.out.println("Enter Balance: ");
             this.balance=sc.nextLong();
 
@@ -68,7 +69,6 @@ public class User {
             userDetails.put(this.u_name,(new User(userDetails.size(),this.f_name,this.u_name,this.password,this.balance,this.acc_type)));
         }
     }
-
     public void deposit(Scanner sc) {
         int depositAmt;
         while (true) {
