@@ -78,11 +78,11 @@ public class Main {
                                     break;
                                 }
                                 case 4:{
-                                    currUser.withdraw(currUser, sc);
+                                    currUser.withdraw(sc);
                                     break;
                                 }
                                 case 5:{
-                                    currUser.deposit(currUser, sc);
+                                    currUser.deposit(sc);
                                     break;
                                 }
                                 case 6: {
