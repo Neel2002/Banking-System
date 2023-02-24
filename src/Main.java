@@ -27,10 +27,10 @@ public class Main {
                     {
                         currUser=userData.getUser(userName);
 
-                        System.out.println("\nLogin succeed! Welcome " + currUser.f_name);
+                        System.out.println("\nLogin successful Welcome " + currUser.f_name);
                         int ch2;
                         do{
-                            System.out.println("1. Calculate Interest \n2. Apply For Loan \n3.Show Profile \n4.Withdraw \n5.Deposit \n6.Logout");
+                            System.out.println("\n1. Calculate Interest \n2. Apply For Loan \n3. Show Profile \n4. Withdraw \n5. Deposit \n6. Logout");
                             ch2 = sc.nextInt();
                             switch (ch2) {
                                 case 1: {
