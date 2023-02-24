@@ -52,15 +52,20 @@ public class User {
             System.out.println("Enter Balance: ");
             this.balance=sc.nextLong();
 
-            Again:
-
-            System.out.println("Enter Account type(c for current, s for savings): ");
-            this.acc_type=sc.next().charAt(0);
-            if(this.acc_type != 'c' || this.acc_type != 'C' || this.acc_type != 's' || this.acc_type != 'S')
+            while(true)
             {
-                System.out.println("Enter Proper Account type");
-                continue Again;
+                System.out.println("Enter Account type(c for current, s for savings): ");
+                this.acc_type=sc.next().charAt(0);
+                if(this.acc_type != 'c' || this.acc_type != 'C' || this.acc_type != 's' || this.acc_type != 'S')
+                {
+                    System.out.println("Enter Proper Account type");
+                }
+                else
+                {
+                    break;
+                }
             }
+            userDetails.put(this.u_name,(new User(userDetails.size(),this.f_name,this.u_name,this.password,this.balance,this.acc_type)));
         }
     }
 
