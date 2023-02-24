@@ -102,7 +102,8 @@ public class Main {
                 }
                 case 2:
                 {
-
+                    User currUser=new User();
+                    currUser.registration(userData.userDetails ,sc);
                 }
                 case 3:
                 {

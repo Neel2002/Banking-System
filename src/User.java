@@ -35,6 +35,34 @@ public class User {
             return false;
         }
     }
+    public void registration(HashMap<String,User> userDetails ,Scanner sc)
+    {
+        System.out.println("Enter User Name: ");
+        this.u_name=sc.next();
+        if(userDetails.containsKey(u_name))
+        {
+            System.out.println("User Name already exists");
+        }
+        else
+        {
+            System.out.println("Enter Password: ");
+            this.password=sc.next();
+            System.out.println("Enter Full Name: ");
+            this.f_name=sc.next();
+            System.out.println("Enter Balance: ");
+            this.balance=sc.nextLong();
+
+            Again:
+
+            System.out.println("Enter Account type(c for current, s for savings): ");
+            this.acc_type=sc.next().charAt(0);
+            if(this.acc_type != 'c' || this.acc_type != 'C' || this.acc_type != 's' || this.acc_type != 'S')
+            {
+                System.out.println("Enter Proper Account type");
+                continue Again;
+            }
+        }
+    }
 
     public User deposit(User u, Scanner sc) {
         System.out.println("Enter amount you want to deposit: ");
