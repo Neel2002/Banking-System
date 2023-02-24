@@ -45,26 +45,20 @@ public class Main {
                                     break;
                                 }
                                 case 2: {
+                                    Approve_Loan obj;
                                     if(currUser.acc_type == 'c'){
-                                        Approve_Loan obj = new CurrentAcLoan();
-                                        if(obj.loanIsApproved(currUser.balance, sc)){
-                                            System.out.println("Congratulations! Loan Is Approved");
-                                        }
-                                        else{
-                                            System.out.println("Sorry! Loan is Rejected! ");
-                                        }
-                                        break;
+                                        obj = new CurrentAcLoan();
                                     }
                                     else {
-                                        Approve_Loan obj = new SavingAcLoan();
-                                        if(obj.loanIsApproved(currUser.balance, sc)){
-                                            System.out.println("Congratulations! Loan Is Approved");
-                                        }
-                                        else{
-                                            System.out.println("Sorry! Loan is Rejected! ");
-                                        }
-                                        break;
+                                        obj = new SavingAcLoan();
                                     }
+                                    if(obj.loanIsApproved(currUser.balance, sc)){
+                                        System.out.println("Congratulations! Loan Is Approved");
+                                    }
+                                    else{
+                                        System.out.println("Sorry! Loan is Rejected! ");
+                                    }
+                                    break;
 
 
                                 }
@@ -100,6 +94,7 @@ public class Main {
                 {
                     User currUser=new User();
                     currUser.registration(userData.userDetails ,sc);
+                    break;
                 }
                 case 3:
                 {
@@ -108,10 +103,12 @@ public class Main {
                 case 4:
                 {
                     System.out.println("Thank You! ");
+                    break;
                 }
                 default:
                 {
                     System.out.println("Enter Valid Choice! ");
+                    break;
                 }
             }
         }while(ch!=4);
@@ -130,17 +127,19 @@ public class Main {
     private static void showProfile(User currUser)
     {
         System.out.print("\nUser Profile:\n");
+        System.out.println("------------------------------------------------------------");
         System.out.println("Full Name: " + currUser.f_name );
-        System.out.println("\nUsername: " + currUser.u_name);
-        System.out.println("\nBalance: " + currUser.balance);
+        System.out.println("Username: " + currUser.u_name);
+        System.out.println("Balance: " + currUser.balance);
         if(currUser.acc_type == 'c')
         {
-            System.out.println("\nAccount Type: Current");
+            System.out.println("Account Type: Current");
         }
         else
         {
-            System.out.println("\nAccount Type: Savings");
+            System.out.println("Account Type: Savings");
         }
+        System.out.println("------------------------------------------------------------\n");
     }
 }
 

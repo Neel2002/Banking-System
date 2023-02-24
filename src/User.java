@@ -37,6 +37,7 @@ public class User {
     {
         System.out.println("Enter User Name: ");
         this.u_name=sc.next();
+        sc.nextLine();
         if(userDetails.containsKey(u_name))
         {
             System.out.println("User Name already exists");
@@ -45,7 +46,7 @@ public class User {
         {
             System.out.println("Enter Full Name: ");
             this.f_name=sc.nextLine();
-            sc.nextLine();
+
             //password
             Console c=System.console();
             char[] passw = c.readPassword("Enter Password: ");
@@ -55,7 +56,7 @@ public class User {
             String p = new String(passw);
             this.password = p;
 
-            System.out.println("\n\nEnter Balance: ");
+            System.out.println("\nEnter Balance: ");
             this.balance=sc.nextLong();
 
             while(true)
