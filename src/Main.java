@@ -1,4 +1,5 @@
 import java.io.Console;
+import java.util.Formatter;
 import java.util.Scanner;
 
 public class Main {
@@ -67,14 +68,9 @@ public class Main {
 
 
                                 }
-                                case 3: {
-                                    System.out.println("Name: " + currUser.f_name + "\nUsername: " + currUser.u_name + "\nYour Balance: " + currUser.balance);
-                                    if(currUser.acc_type == 'c'){
-                                        System.out.println("Account Type: Current");
-                                    }
-                                    else{
-                                        System.out.println("Account Type: Savings");
-                                    }
+                                case 3:
+                                {
+                                    showProfile(currUser);
                                     break;
                                 }
                                 case 4:{
@@ -130,4 +126,21 @@ public class Main {
         String p = new String(passw);
         return p;
     }
+
+    private static void showProfile(User currUser)
+    {
+        System.out.print("\nUser Profile:\n");
+        System.out.println("Full Name: " + currUser.f_name );
+        System.out.println("\nUsername: " + currUser.u_name);
+        System.out.println("\nBalance: " + currUser.balance);
+        if(currUser.acc_type == 'c')
+        {
+            System.out.println("\nAccount Type: Current");
+        }
+        else
+        {
+            System.out.println("\nAccount Type: Savings");
+        }
+    }
 }
+

@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -45,12 +46,19 @@ public class User {
         }
         else
         {
-            System.out.println("Enter Password: ");
-            this.password=sc.next();
             System.out.println("Enter Full Name: ");
             this.f_name=sc.nextLine();
-            String temp=sc.nextLine();
-            System.out.println("Enter Balance: ");
+            sc.nextLine();
+            //password
+            Console c=System.console();
+            char[] passw = c.readPassword("Enter Password: ");
+            for(int i=0;i<passw.length;i++){
+                System.out.print("*");
+            }
+            String p = new String(passw);
+            this.password = p;
+
+            System.out.println("\n\nEnter Balance: ");
             this.balance=sc.nextLong();
 
             while(true)
