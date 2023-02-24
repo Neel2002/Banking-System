@@ -48,21 +48,28 @@ public class User {
             System.out.println("Enter Password: ");
             this.password=sc.next();
             System.out.println("Enter Full Name: ");
-            this.f_name=sc.next();
+            this.f_name=sc.nextLine();
+            String temp=sc.nextLine();
             System.out.println("Enter Balance: ");
             this.balance=sc.nextLong();
 
             while(true)
             {
-                System.out.println("Enter Account type(c for current, s for savings): ");
-                this.acc_type=sc.next().charAt(0);
-                if(this.acc_type != 'c' || this.acc_type != 'C' || this.acc_type != 's' || this.acc_type != 'S')
+                System.out.println("Enter Account type(1 for current, 2 for savings): ");
+                int type=sc.nextInt();
+                if(type==1)
                 {
-                    System.out.println("Enter Proper Account type");
+                    this.acc_type='c';
+                    break;
+                }
+                else if (type==2)
+                {
+                    this.acc_type='s';
+                    break;
                 }
                 else
                 {
-                    break;
+                    System.out.println("Enter Proper Account type");
                 }
             }
             userDetails.put(this.u_name,(new User(userDetails.size(),this.f_name,this.u_name,this.password,this.balance,this.acc_type)));
