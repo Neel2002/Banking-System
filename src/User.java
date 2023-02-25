@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -37,10 +38,7 @@ public class User {
     }
     public void registration(HashMap<String,User> userDetails ,Scanner sc)
     {
-        System.out.println("Enter Full Name: ");
-        this.f_name=sc.nextLine();
-        sc.next();
-        System.out.println("Enter User Name: ");
+        System.out.print("\nEnter User Name: ");
         this.u_name=sc.next();
         if(userDetails.containsKey(u_name))
         {
@@ -48,31 +46,55 @@ public class User {
         }
         else
         {
-            System.out.println("Enter Password: ");
-            this.password=sc.next();
-            System.out.println("Enter Balance: ");
+            Console c=System.console();
+            char[] passw = c.readPassword("Enter Password: ");
+            for(int i=0;i<passw.length;i++){
+                System.out.print("*");
+            }
+            String p = new String(passw);
+            this.password = p;
+            System.out.print("\nEnter Full Name: ");
+            this.f_name=sc.nextLine();
+            sc.nextLine();
+            System.out.print("Enter Balance: ");
             this.balance=sc.nextLong();
 
             while(true)
             {
-                System.out.println("Enter Account type(c for current, s for savings): ");
-                this.acc_type=sc.next().charAt(0);
-                if(this.acc_type != 'c' || this.acc_type != 'C' || this.acc_type != 's' || this.acc_type != 'S')
+                System.out.print("Enter Account type(1 for current, 2 for savings): ");
+                int type=sc.nextInt();
+                if(type==1)
                 {
-                    System.out.println("Enter Proper Account type");
+                    this.acc_type='c';
+                    break;
+                }
+                else if (type==2)
+                {
+                    this.acc_type='s';
+                    break;
                 }
                 else
                 {
-                    break;
+                    System.out.println("Enter Proper Account type");
                 }
             }
             userDetails.put(this.u_name,(new User(userDetails.size(),this.f_name,this.u_name,this.password,this.balance,this.acc_type)));
         }
     }
+    public void changePassword(Scanner sc){
+        Console c=System.console();
+        char[] passw = c.readPassword("\nEnter Password: ");
+        for(int i=0;i<passw.length;i++){
+            System.out.print("*");
+        }
+        String p = new String(passw);
+        this.password = p;
+        System.out.print("\nPassword changed successfully\n ");
+    }
     public void deposit(Scanner sc) {
         int depositAmt;
         while (true) {
-            System.out.println("Enter amount you want to deposit: ");
+            System.out.print("\nEnter amount you want to deposit: ");
             depositAmt = sc.nextInt();
             if (depositAmt <= 0) {
                 System.out.println("Enter valid positive amount. ");
@@ -82,16 +104,18 @@ public class User {
             }
         }
         this.balance += depositAmt;
+        System.out.print("Your balance after deposit: "+this.balance);
+        System.out.println();
     }
 
     public void withdraw(Scanner sc) {
         System.out.print("\nYour Balance: " + this.balance);
         int withdrawAmt;
         while (true) {
-            System.out.println("Enter amount you want to withdraw: ");
+            System.out.print("\nEnter amount you want to withdraw: ");
             withdrawAmt = sc.nextInt();
             if (withdrawAmt <= 0) {
-                System.out.println("Enter valid positive amount. ");
+                System.out.println("\nEnter valid positive amount. ");
             } else if (withdrawAmt > this.balance) {
                 System.out.print("\nInsufficient balance. Enter valid amount.");
             } else {
@@ -99,6 +123,8 @@ public class User {
             }
         }
         this.balance -= withdrawAmt;
+        System.out.print("Your balance after withdraw: "+this.balance);
+        System.out.println();
     }
 }
 
@@ -112,14 +138,14 @@ class UserData {
         userDetails.put("jinal", new User(4, "Jinal Thakor", "jinal", "jinal", 200000L, 's'));
     }
 
-    public void getData(User user) {
-        Formatter fmt = new Formatter();
-        fmt.format("\n%10 %15 %15", "Account Number", "Full Name", "User Name");
-        System.out.println("\n------------------------------------------------------------\n");
-        fmt.format("%10 %15 %15", user.Account_no, user.f_name, user.u_name);
-        System.out.println(fmt);
-
-    }
+//    public void getData(User user) {
+//        Formatter fmt = new Formatter();
+//        fmt.format("\n%10 %15 %15", "Account Number", "Full Name", "User Name");
+//        System.out.println("\n------------------------------------------------------------\n");
+//        fmt.format("%10 %15 %15", user.Account_no, user.f_name, user.u_name);
+//        System.out.println(fmt);
+//
+//    }
 
     public User getUser(String name)
     {

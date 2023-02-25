@@ -12,8 +12,12 @@ class SavingAcLoan implements Approve_Loan{
             return false;
         }
         System.out.println("Maximum amount of loan can be approved: " + balance*1.5);
-        System.out.println("Enter Loan Amount: ");
+        System.out.print("Enter Loan Amount: ");
         long loan = sc.nextLong();
+        if(loan<0){
+            System.out.print("Enter valid positive amount ");
+            return false;
+        }
         if(loan < balance*1.5){
             return true;
         }
@@ -31,8 +35,12 @@ class CurrentAcLoan implements Approve_Loan{
             return false;
         }
         System.out.println("Maximum amount of loan can be approved: " + balance*3);
-        System.out.println("Enter Loan Amount: ");
+        System.out.print("Enter Loan Amount: ");
         long loan = sc.nextLong();
+        if(loan<0){
+            System.out.print("Enter valid positive amount ");
+            return false;
+        }
         if(loan < balance*3){
             return true;
         }
