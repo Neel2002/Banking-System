@@ -55,7 +55,7 @@ public class Main {
                                     }
                                     case 3: {
                                         System.out.println("Name: " + currUser.f_name + "\nUsername: " + currUser.u_name + "\nYour Balance: " + currUser.balance);
-                                        System.out.println("Account Type: Savings");
+                                        System.out.println("Account Type: Saving");
                                         break;
                                     }
                                     case 4:{
